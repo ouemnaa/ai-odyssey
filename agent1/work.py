@@ -7,6 +7,11 @@ import json
 import sys
 import time
 import csv
+import numpy as np
+from collections import defaultdict
+
+from scipy.sparse import csr_matrix
+from scipy.sparse.linalg import eigsh
 
 class ForensicGraphAgent:
     def __init__(self, api_key):
@@ -899,6 +904,119 @@ class ForensicGraphAgent:
         print(f"✅ {len(ponzi_patterns)} patterns Ponzi détectés")
         return ponzi_patterns
     
+    # ============================== PageRank ================================
+    
+    def calculate_wallet_pagerank(self, alpha=0.85, max_iter=100, tol=1.0e-6):
+        """Calculate PageRank for wallets to find influential nodes"""
+        print("\n📈 Calcul de PageRank pour l'analyse d'influence...")
+    
+        if self.combined_G.number_of_nodes() == 0:
+            print("⚠️  Graphe vide, impossible de calculer PageRank")
+            return {}
+    
+        try:
+            # Calculate PageRank (NetworkX built-in)
+            pagerank_scores = nx.pagerank(
+            self.combined_G,
+            alpha=alpha,  # damping factor
+            max_iter=max_iter,
+            tol=tol,
+            weight='combined_total'  # Use transaction amounts as weights
+            )
+        
+            # Sort by score
+            sorted_pagerank = sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True)
+        
+            print(f"✅ PageRank calculé pour {len(pagerank_scores)} wallets")
+        
+            # Display top influencers
+            print("\n🏆 TOP 10 WALLETS PAR INFLUENCE (PageRank):")
+            for i, (wallet, score) in enumerate(sorted_pagerank[:10], 1):
+                # Get additional info
+                in_degree = self.combined_G.in_degree(wallet)
+                out_degree = self.combined_G.out_degree(wallet)
+            
+                # Check if it's a whale
+                is_whale = wallet in self.token_holders
+            
+                whale_marker = "🐋 " if is_whale else "  "
+                print(f"{i:2d}. {whale_marker}{wallet[:12]}...")
+                print(f"    Score: {score:.6f} | Connexions: {in_degree}→ {out_degree}←")
+            
+                if is_whale:
+                    balance = self.token_holders.get(wallet, 0)
+                    print(f"    Balance token: {balance:,.2f}")
+        
+            return pagerank_scores
+        
+        except Exception as e:
+            print(f"⚠️  Erreur PageRank: {e}")
+            return {}
+
+    def detect_influencer_dumping_risk(self, pagerank_scores, threshold_ratio=0.1):
+        """Detect risk of token dumping by influential wallets"""
+        print("\n⚠️  Analyse du risque de dumping par les influenceurs...")
+    
+        if not pagerank_scores or not self.token_holders:
+            print("⚠️  Données insuffisantes pour l'analyse de dumping")
+            return []
+    
+        risks = []
+    
+        # Get top influencers by PageRank
+        top_influencers = sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True)[:20]
+    
+        for wallet, pagerank_score in top_influencers:
+            if wallet in self.token_holders:
+                token_balance = self.token_holders[wallet]
+            
+                # Calculate outgoing volume
+                total_outgoing = sum(
+                self.combined_G[wallet][succ].get('total_amount', 0)
+                for succ in self.combined_G.successors(wallet)
+                if self.combined_G.has_edge(wallet, succ)
+                )
+            
+                # Calculate risk indicators
+                if token_balance > 0:
+                    # Ratio of outgoing vs holdings
+                    outgoing_ratio = total_outgoing / token_balance if token_balance > 0 else 0
+                
+                    # High PageRank + high outgoing ratio = dumping risk
+                    if outgoing_ratio > threshold_ratio:
+                        risk_score = min(pagerank_score * outgoing_ratio * 10, 1.0)
+                    
+                        risk_level = "CRITICAL" if risk_score > 0.7 else "HIGH" if risk_score > 0.5 else "MEDIUM"
+                    
+                        risks.append({
+                        'type': 'influencer_dumping_risk',
+                        'wallet': wallet,
+                        'pagerank_score': pagerank_score,
+                        'token_balance': token_balance,
+                        'total_outgoing': total_outgoing,
+                        'outgoing_ratio': outgoing_ratio,
+                        'risk_score': risk_score,
+                        'risk_level': risk_level,
+                        'in_degree': self.combined_G.in_degree(wallet),
+                        'out_degree': self.combined_G.out_degree(wallet)
+                        })
+    
+        if risks:
+            print(f"✅ {len(risks)} risques de dumping détectés")
+        
+            # Sort by risk
+            risks_sorted = sorted(risks, key=lambda x: x['risk_score'], reverse=True)
+        
+            print("\n🚨 TOP RISQUES DE DUMPING:")
+            for i, risk in enumerate(risks_sorted[:5], 1):
+                print(f"{i}. {risk['wallet'][:12]}...")
+                print(f"   Score: {risk['risk_score']:.3f} | Niveau: {risk['risk_level']}")
+                print(f"   PageRank: {risk['pagerank_score']:.4f} | Balance: {risk['token_balance']:,.2f}")
+                print(f"   Ratio sorties/balance: {risk['outgoing_ratio']:.2%}")
+    
+        return risks
+    
+    
     # ==================== MÉTHODES EXISTANTES AMÉLIORÉES ====================
     
     def detect_all_clusters_real(self):
@@ -908,7 +1026,7 @@ class ForensicGraphAgent:
         
         all_clusters = []
         
-        # Détections de base
+        #Détections de base
         print("\n1. Clusters de source commune...")
         source_clusters = self.detect_common_source_clusters_real()
         all_clusters.extend(source_clusters)
@@ -934,13 +1052,20 @@ class ForensicGraphAgent:
         # mixer_patterns = self.detect_mixer_patterns()
         # all_clusters.extend(mixer_patterns)
         
-        # print("\n7. Patterns Ponzi...")
-        # ponzi_patterns = self.detect_ponzi_patterns()
-        # all_clusters.extend(ponzi_patterns)
+        print("\n7. Patterns Ponzi...")
+        ponzi_patterns = self.detect_ponzi_patterns()
+        all_clusters.extend(ponzi_patterns)
         
         print("\n8. Clusters avec whales...")
         whale_clusters = self.detect_clusters_with_whales()
         all_clusters.extend(whale_clusters)
+        
+        print("\n9. Analyse PageRank pour influenceurs...")
+        pagerank_scores = self.calculate_wallet_pagerank()
+    
+        print("\n10. Risque de dumping par influenceurs...")
+        dumping_risks = self.detect_influencer_dumping_risk(pagerank_scores)
+        all_clusters.extend(dumping_risks)
         
         print(f"\n✅ Total: {len(all_clusters)} clusters et patterns détectés")
         
@@ -1531,3 +1656,5 @@ if __name__ == "__main__":
     print("\n" + "=" * 70)
     print("🎯 Analyse terminée")
     print("=" * 70)
+    
+    
