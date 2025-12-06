@@ -1,0 +1,515 @@
+type,risk_level,risk_score,size,whale_count,total_amount,description
+common_source,HIGH,0.627,38,0,2392782443.702904,38 wallets
+common_source,MEDIUM,0.487,3,0,161738179.9921017,3 wallets
+common_source,MEDIUM,0.588,8,0,232878661.87962338,8 wallets
+common_source,MEDIUM,0.508,4,0,473169059.78055876,4 wallets
+common_source,HIGH,0.627,39,0,39042687313.129196,39 wallets
+common_source,MEDIUM,0.487,3,0,60659242366.61905,3 wallets
+common_source,HIGH,0.627,93,0,31825130899.72,93 wallets
+common_source,HIGH,0.607,9,0,85970321258.29001,9 wallets
+common_source,MEDIUM,0.508,4,0,33708174339.930004,4 wallets
+common_source,HIGH,0.627,13,0,156210849685.07,13 wallets
+common_source,HIGH,0.627,18,0,452299491.20603764,18 wallets
+common_source,HIGH,0.627,61,0,43877838482.689995,61 wallets
+common_source,MEDIUM,0.508,4,0,6399981.880108576,4 wallets
+common_source,MEDIUM,0.487,3,0,7528934.19864347,3 wallets
+common_source,HIGH,0.627,108,0,1314601222863.13,108 wallets
+common_source,MEDIUM,0.567,7,0,10822585007.4,7 wallets
+common_source,HIGH,0.627,130,0,629688555201.5181,130 wallets
+common_source,HIGH,0.627,16,0,3432030237.1371703,16 wallets
+common_source,HIGH,0.627,19,0,127598650267.20241,19 wallets
+common_source,HIGH,0.627,23,0,3995576939.799935,23 wallets
+common_source,HIGH,0.627,13,0,23829753143.444466,13 wallets
+common_source,MEDIUM,0.487,3,0,5230391.47780997,3 wallets
+common_source,HIGH,0.627,14,0,275629049.9060253,14 wallets
+common_source,HIGH,0.627,34,0,2285261825.94482,34 wallets
+common_source,HIGH,0.627,33,0,737032787.5895436,33 wallets
+common_source,HIGH,0.627,11,0,371306723.2349623,11 wallets
+common_source,MEDIUM,0.508,4,0,8140540.700296353,4 wallets
+common_source,HIGH,0.627,84,0,22042172796.63,84 wallets
+common_source,HIGH,0.627,41,0,20312859136.68143,41 wallets
+common_source,MEDIUM,0.567,7,0,50003412.46655578,7 wallets
+common_source,HIGH,0.627,13,0,24853544.652919564,13 wallets
+common_source,HIGH,0.627,17,0,5762980831.733652,17 wallets
+common_source,HIGH,0.627,16,0,10478088912.466688,16 wallets
+common_source,MEDIUM,0.508,4,0,8616830327.332153,4 wallets
+common_source,MEDIUM,0.487,3,0,10793720.22,3 wallets
+common_source,HIGH,0.627,51,0,26277797749.70994,51 wallets
+common_source,MEDIUM,0.547,6,0,22472156.211276732,6 wallets
+common_source,HIGH,0.627,25,0,42300210203.83,25 wallets
+common_source,HIGH,0.627,29,0,1349297885.58945,29 wallets
+common_source,MEDIUM,0.508,4,0,14635340.455413217,4 wallets
+common_source,HIGH,0.627,23,0,88636920542.0,23 wallets
+common_source,HIGH,0.627,39,0,2856860600.694762,39 wallets
+common_source,MEDIUM,0.508,4,0,129617192.21160555,4 wallets
+common_source,MEDIUM,0.567,7,0,1741190.6383075195,7 wallets
+common_source,HIGH,0.627,21,0,31128636954.11724,21 wallets
+common_source,MEDIUM,0.447,150,0,97.75670981622702,150 wallets
+common_source,HIGH,0.627,30,0,723573497.6845748,30 wallets
+common_source,HIGH,0.627,13,0,97307957.91622,13 wallets
+common_source,HIGH,0.627,21,0,7491233443.130367,21 wallets
+common_source,HIGH,0.627,14,0,35659191519.67341,14 wallets
+common_source,MEDIUM,0.508,4,0,2720633826.016969,4 wallets
+common_source,MEDIUM,0.567,7,0,20948529.061831865,7 wallets
+common_source,HIGH,0.627,15,0,309625218.8277864,15 wallets
+common_source,HIGH,0.627,26,0,390255598.863225,26 wallets
+common_source,MEDIUM,0.528,5,0,3760161721.925516,5 wallets
+common_source,MEDIUM,0.487,3,0,1151866801.51,3 wallets
+common_source,HIGH,0.627,10,0,85278840.9928694,10 wallets
+common_source,HIGH,0.627,17,0,4523937.04384847,17 wallets
+common_source,HIGH,0.627,12,0,53464599.66900024,12 wallets
+common_source,HIGH,0.627,76,0,1669469461.22492,76 wallets
+common_source,HIGH,0.627,20,0,2343936471.8202486,20 wallets
+common_source,HIGH,0.627,10,0,327401.08136715734,10 wallets
+common_source,MEDIUM,0.487,3,0,4635609.781466756,3 wallets
+common_source,HIGH,0.607,9,0,847850375.4301518,9 wallets
+common_source,HIGH,0.627,23,0,429204665.59297746,23 wallets
+common_source,HIGH,0.627,24,0,13065474041.548344,24 wallets
+common_source,MEDIUM,0.588,8,0,21797553.432940107,8 wallets
+common_source,MEDIUM,0.547,6,0,289842511.9183369,6 wallets
+common_source,MEDIUM,0.508,4,0,2585004966.9955926,4 wallets
+common_source,MEDIUM,0.547,6,0,124115924144.27228,6 wallets
+common_source,HIGH,0.627,10,0,347421977.0346646,10 wallets
+common_source,HIGH,0.627,24,0,1120696955.9325633,24 wallets
+common_source,HIGH,0.627,25,0,178236022.36834523,25 wallets
+common_source,HIGH,0.627,18,0,56090513376.0,18 wallets
+common_source,MEDIUM,0.487,3,0,3003092.746874727,3 wallets
+common_source,MEDIUM,0.567,7,0,171474589.64211762,7 wallets
+common_source,MEDIUM,0.567,7,0,42320688.6851793,7 wallets
+common_source,MEDIUM,0.567,7,0,2323298.30858338,7 wallets
+common_source,HIGH,0.627,11,0,2177341523.1567473,11 wallets
+common_source,MEDIUM,0.567,7,0,237357891.70156315,7 wallets
+common_source,MEDIUM,0.528,5,0,86303677.88,5 wallets
+common_source,MEDIUM,0.508,4,0,95926744.8193981,4 wallets
+common_source,MEDIUM,0.528,5,0,54615844.660000004,5 wallets
+common_source,HIGH,0.627,12,0,3096539041.709431,12 wallets
+common_source,HIGH,0.607,9,0,812390929.439823,9 wallets
+common_source,MEDIUM,0.567,7,0,22436606.78477588,7 wallets
+common_source,MEDIUM,0.528,5,0,475998098.06,5 wallets
+common_source,MEDIUM,0.508,4,0,15908970.269926721,4 wallets
+common_source,HIGH,0.627,10,0,8319999.999999999,10 wallets
+common_source,MEDIUM,0.588,8,0,1971544569.1099,8 wallets
+common_source,MEDIUM,0.528,5,0,25221771.580000002,5 wallets
+common_source,HIGH,0.627,11,0,307811824.63283306,11 wallets
+common_source,MEDIUM,0.588,8,0,42426986704.848015,8 wallets
+common_source,MEDIUM,0.508,4,0,4400000000.0,4 wallets
+common_source,MEDIUM,0.487,3,0,32188046.52584055,3 wallets
+common_source,HIGH,0.627,11,0,10888216867.226034,11 wallets
+common_source,MEDIUM,0.487,3,0,600463091.4117512,3 wallets
+common_source,MEDIUM,0.508,4,0,2021796562.5257342,4 wallets
+common_source,MEDIUM,0.487,3,0,130133748.44245169,3 wallets
+common_source,MEDIUM,0.567,7,0,201629059567.4,7 wallets
+common_source,MEDIUM,0.487,3,0,2211607043.206363,3 wallets
+common_source,MEDIUM,0.508,4,0,5493340920.66,4 wallets
+common_source,MEDIUM,0.487,3,0,3616700.744697121,3 wallets
+common_source,MEDIUM,0.508,4,0,6892894672.36017,4 wallets
+common_source,MEDIUM,0.487,3,0,45579644210.0,3 wallets
+common_source,MEDIUM,0.508,4,0,177049965.13467434,4 wallets
+common_source,MEDIUM,0.547,6,0,69081334.5,6 wallets
+common_source,MEDIUM,0.508,4,0,90189528869.984,4 wallets
+common_source,MEDIUM,0.547,6,0,9603082483.430765,6 wallets
+common_source,MEDIUM,0.508,4,0,353114847.1806433,4 wallets
+common_source,MEDIUM,0.487,3,0,23792002.810000002,3 wallets
+common_source,MEDIUM,0.508,4,0,2483557041.1289034,4 wallets
+common_source,MEDIUM,0.487,3,0,56518275154.0,3 wallets
+common_source,MEDIUM,0.487,3,0,16392944458.657999,3 wallets
+common_source,MEDIUM,0.567,7,0,28725.736838798708,7 wallets
+common_source,MEDIUM,0.508,4,0,11804306.174553,4 wallets
+common_source,MEDIUM,0.508,4,0,78135421.17999999,4 wallets
+common_source,MEDIUM,0.508,4,0,24351297.46931639,4 wallets
+common_source,MEDIUM,0.508,4,0,955982081.4792063,4 wallets
+common_source,LOW,0.287,3,0,0.0,3 wallets
+common_source,MEDIUM,0.487,3,0,17488424323.6458,3 wallets
+common_source,MEDIUM,0.487,3,0,250000000.0,3 wallets
+highly_connected,MEDIUM,0.41,81,0,0,81 wallets
+highly_connected,MEDIUM,0.41,360,0,0,360 wallets
+highly_connected,MEDIUM,0.41,69,0,0,69 wallets
+highly_connected,MEDIUM,0.41,326,0,0,326 wallets
+highly_connected,MEDIUM,0.41,365,0,0,365 wallets
+highly_connected,MEDIUM,0.41,114,0,0,114 wallets
+highly_connected,MEDIUM,0.41,154,0,0,154 wallets
+highly_connected,LOW,0.37,8,0,0,8 wallets
+highly_connected,MEDIUM,0.41,232,0,0,232 wallets
+highly_connected,MEDIUM,0.41,287,0,0,287 wallets
+highly_connected,MEDIUM,0.41,112,0,0,112 wallets
+highly_connected,MEDIUM,0.41,235,0,0,235 wallets
+highly_connected,MEDIUM,0.41,192,0,0,192 wallets
+highly_connected,MEDIUM,0.41,125,0,0,125 wallets
+highly_connected,MEDIUM,0.41,133,0,0,133 wallets
+highly_connected,MEDIUM,0.41,240,0,0,240 wallets
+highly_connected,MEDIUM,0.41,56,0,0,56 wallets
+highly_connected,LOW,0.35,7,0,0,7 wallets
+highly_connected,MEDIUM,0.41,36,0,0,36 wallets
+highly_connected,MEDIUM,0.41,66,0,0,66 wallets
+highly_connected,MEDIUM,0.41,60,0,0,60 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,MEDIUM,0.41,30,0,0,30 wallets
+highly_connected,MEDIUM,0.41,117,0,0,117 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,MEDIUM,0.41,12,0,0,12 wallets
+highly_connected,MEDIUM,0.41,41,0,0,41 wallets
+highly_connected,MEDIUM,0.41,12,0,0,12 wallets
+highly_connected,LOW,0.31,5,0,0,5 wallets
+highly_connected,LOW,0.37,8,0,0,8 wallets
+highly_connected,MEDIUM,0.41,14,0,0,14 wallets
+highly_connected,MEDIUM,0.41,11,0,0,11 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.29,4,0,0,4 wallets
+highly_connected,LOW,0.35,7,0,0,7 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.29,4,0,0,4 wallets
+highly_connected,MEDIUM,0.41,10,0,0,10 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.31,5,0,0,5 wallets
+highly_connected,LOW,0.29,4,0,0,4 wallets
+highly_connected,LOW,0.39,9,0,0,9 wallets
+highly_connected,LOW,0.31,5,0,0,5 wallets
+highly_connected,LOW,0.33,6,0,0,6 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.37,8,0,0,8 wallets
+highly_connected,LOW,0.31,5,0,0,5 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.29,4,0,0,4 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.29,4,0,0,4 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,LOW,0.27,3,0,0,3 wallets
+highly_connected,MEDIUM,0.41,12,0,0,12 wallets
+amount_based,MEDIUM,0.477,6,0,21173.581201642635,6 wallets | 21173.58 ETH
+amount_based,MEDIUM,0.458,5,0,45000000.0,5 wallets | 45000000.00 ETH
+amount_based,MEDIUM,0.438,4,0,34285683.56570646,4 wallets | 34285683.57 ETH
+amount_based,MEDIUM,0.458,5,0,42266.443751520426,5 wallets | 42266.44 ETH
+amount_based,MEDIUM,0.458,5,0,30979829.268888902,5 wallets | 30979829.27 ETH
+amount_based,MEDIUM,0.477,6,0,7989663.212967933,6 wallets | 7989663.21 ETH
+amount_based,MEDIUM,0.477,6,0,70552040.42629042,6 wallets | 70552040.43 ETH
+amount_based,MEDIUM,0.477,6,0,242933.63596365627,6 wallets | 242933.64 ETH
+amount_based,MEDIUM,0.518,8,0,3959836.0579752987,8 wallets | 3959836.06 ETH
+amount_based,MEDIUM,0.518,8,0,5472.238733448026,8 wallets | 5472.24 ETH
+amount_based,MEDIUM,0.497,7,0,12985311.73629114,7 wallets | 12985311.74 ETH
+amount_based,MEDIUM,0.518,8,0,892625.6970934209,8 wallets | 892625.70 ETH
+amount_based,MEDIUM,0.458,5,0,413219.6089415462,5 wallets | 413219.61 ETH
+amount_based,MEDIUM,0.497,7,0,6000000.0,7 wallets | 6000000.00 ETH
+amount_based,MEDIUM,0.458,5,0,2000122.5035063906,5 wallets | 2000122.50 ETH
+amount_based,MEDIUM,0.497,7,0,2969027.377775893,7 wallets | 2969027.38 ETH
+amount_based,MEDIUM,0.477,6,0,3129293.474444166,6 wallets | 3129293.47 ETH
+amount_based,MEDIUM,0.458,5,0,900000000.0,5 wallets | 900000000.00 ETH
+amount_based,MEDIUM,0.497,7,0,3159424.3060449385,7 wallets | 3159424.31 ETH
+amount_based,MEDIUM,0.477,6,0,17079446.23063895,6 wallets | 17079446.23 ETH
+amount_based,MEDIUM,0.438,4,0,659933.78,4 wallets | 659933.78 ETH
+amount_based,MEDIUM,0.458,5,0,636706.3200000001,5 wallets | 636706.32 ETH
+amount_based,MEDIUM,0.458,5,0,3263738.0049443045,5 wallets | 3263738.00 ETH
+amount_based,MEDIUM,0.558,34,0,210000142.32,34 wallets | 210000142.32 ETH
+amount_based,MEDIUM,0.477,6,0,13352464.18325686,6 wallets | 13352464.18 ETH
+amount_based,MEDIUM,0.458,5,0,30579612.9536945,5 wallets | 30579612.95 ETH
+amount_based,MEDIUM,0.458,5,0,18000000.0,5 wallets | 18000000.00 ETH
+amount_based,MEDIUM,0.477,6,0,60000000.0,6 wallets | 60000000.00 ETH
+amount_based,MEDIUM,0.477,6,0,51484.18147310941,6 wallets | 51484.18 ETH
+amount_based,MEDIUM,0.477,6,0,13499542.192499999,6 wallets | 13499542.19 ETH
+amount_based,MEDIUM,0.477,6,0,152000000.0,6 wallets | 152000000.00 ETH
+amount_based,MEDIUM,0.417,3,0,8941684.65,3 wallets | 8941684.65 ETH
+amount_based,MEDIUM,0.458,5,0,435000000.0,5 wallets | 435000000.00 ETH
+amount_based,MEDIUM,0.558,10,0,1201055.7442982004,10 wallets | 1201055.74 ETH
+amount_based,MEDIUM,0.558,11,0,108373.92948639521,11 wallets | 108373.93 ETH
+amount_based,MEDIUM,0.458,5,0,14703333.01,5 wallets | 14703333.01 ETH
+amount_based,MEDIUM,0.518,8,0,4288164.018529058,8 wallets | 4288164.02 ETH
+amount_based,MEDIUM,0.458,5,0,6794554.897408767,5 wallets | 6794554.90 ETH
+amount_based,MEDIUM,0.477,6,0,3086147.8184587676,6 wallets | 3086147.82 ETH
+amount_based,MEDIUM,0.458,5,0,6942549.340679271,5 wallets | 6942549.34 ETH
+amount_based,MEDIUM,0.458,5,0,752831.616911128,5 wallets | 752831.62 ETH
+amount_based,MEDIUM,0.417,3,0,305196150.12,3 wallets | 305196150.12 ETH
+amount_based,MEDIUM,0.477,6,0,839588.0,6 wallets | 839588.00 ETH
+amount_based,MEDIUM,0.438,4,0,1366905.0,4 wallets | 1366905.00 ETH
+amount_based,MEDIUM,0.458,5,0,4337444.0,5 wallets | 4337444.00 ETH
+amount_based,MEDIUM,0.558,19,0,10000000.0,19 wallets | 10000000.00 ETH
+amount_based,MEDIUM,0.458,5,0,24337985.200000003,5 wallets | 24337985.20 ETH
+amount_based,MEDIUM,0.417,3,0,764857200.0,3 wallets | 764857200.00 ETH
+amount_based,MEDIUM,0.477,6,0,8791639.90925,6 wallets | 8791639.91 ETH
+amount_based,MEDIUM,0.458,5,0,2985244.1493210774,5 wallets | 2985244.15 ETH
+amount_based,MEDIUM,0.477,6,0,24000000.0,6 wallets | 24000000.00 ETH
+amount_based,MEDIUM,0.477,6,0,13424362.229179949,6 wallets | 13424362.23 ETH
+amount_based,MEDIUM,0.458,5,0,1683285.52037478,5 wallets | 1683285.52 ETH
+amount_based,MEDIUM,0.458,5,0,4891738420.0,5 wallets | 4891738420.00 ETH
+amount_based,MEDIUM,0.477,6,0,360000000.0,6 wallets | 360000000.00 ETH
+amount_based,MEDIUM,0.438,4,0,671415.89819741,4 wallets | 671415.90 ETH
+amount_based,MEDIUM,0.458,5,0,5819423.082735133,5 wallets | 5819423.08 ETH
+amount_based,MEDIUM,0.477,6,0,17852741.35506,6 wallets | 17852741.36 ETH
+amount_based,MEDIUM,0.438,4,0,18720619200.0,4 wallets | 18720619200.00 ETH
+amount_based,MEDIUM,0.438,4,0,127957719.65529688,4 wallets | 127957719.66 ETH
+amount_based,MEDIUM,0.477,6,0,30110437.660310995,6 wallets | 30110437.66 ETH
+amount_based,MEDIUM,0.438,4,0,25248701.3779641,4 wallets | 25248701.38 ETH
+amount_based,MEDIUM,0.458,5,0,3227052.1363491905,5 wallets | 3227052.14 ETH
+amount_based,MEDIUM,0.458,5,0,13465879.466494413,5 wallets | 13465879.47 ETH
+amount_based,MEDIUM,0.497,7,0,5197404.171239226,7 wallets | 5197404.17 ETH
+amount_based,MEDIUM,0.458,5,0,3519741.0480965823,5 wallets | 3519741.05 ETH
+amount_based,MEDIUM,0.458,5,0,163246.21197961763,5 wallets | 163246.21 ETH
+amount_based,MEDIUM,0.458,5,0,434846.65929538786,5 wallets | 434846.66 ETH
+amount_based,MEDIUM,0.518,8,0,823688.7346626369,8 wallets | 823688.73 ETH
+amount_based,MEDIUM,0.438,4,0,617385191.8228025,4 wallets | 617385191.82 ETH
+amount_based,LOW,0.358,48,0,0.00010131588924870695,48 wallets | 0.00 ETH
+amount_based,MEDIUM,0.458,5,0,197522.04219850418,5 wallets | 197522.04 ETH
+amount_based,MEDIUM,0.558,15,0,126204.57174275212,15 wallets | 126204.57 ETH
+amount_based,LOW,0.36,59,0,11.662232730579012,59 wallets | 11.66 ETH
+amount_based,MEDIUM,0.518,8,0,130828.08030856913,8 wallets | 130828.08 ETH
+amount_based,MEDIUM,0.458,5,0,14144348.19666456,5 wallets | 14144348.20 ETH
+amount_based,MEDIUM,0.458,5,0,2375663.091168275,5 wallets | 2375663.09 ETH
+amount_based,MEDIUM,0.458,5,0,4017293.3965127086,5 wallets | 4017293.40 ETH
+amount_based,MEDIUM,0.538,9,0,29349.752023241792,9 wallets | 29349.75 ETH
+amount_based,MEDIUM,0.477,6,0,2012720.305951808,6 wallets | 2012720.31 ETH
+amount_based,MEDIUM,0.477,6,0,231126.06230193653,6 wallets | 231126.06 ETH
+amount_based,MEDIUM,0.558,10,0,104466.34424706968,10 wallets | 104466.34 ETH
+amount_based,MEDIUM,0.477,6,0,618581.4181785793,6 wallets | 618581.42 ETH
+amount_based,MEDIUM,0.518,8,0,15194.840875020054,8 wallets | 15194.84 ETH
+amount_based,MEDIUM,0.458,5,0,369906.2482399249,5 wallets | 369906.25 ETH
+amount_based,MEDIUM,0.497,7,0,475588.64099016145,7 wallets | 475588.64 ETH
+amount_based,MEDIUM,0.458,5,0,5400000.0,5 wallets | 5400000.00 ETH
+amount_based,MEDIUM,0.558,18,0,22644.943215403917,18 wallets | 22644.94 ETH
+amount_based,MEDIUM,0.477,6,0,1489.6878578282433,6 wallets | 1489.69 ETH
+amount_based,MEDIUM,0.458,5,0,38462792.79407228,5 wallets | 38462792.79 ETH
+amount_based,MEDIUM,0.458,5,0,16397960.49446137,5 wallets | 16397960.49 ETH
+amount_based,MEDIUM,0.477,6,0,8550.419357892544,6 wallets | 8550.42 ETH
+amount_based,MEDIUM,0.538,9,0,15000000.0,9 wallets | 15000000.00 ETH
+amount_based,MEDIUM,0.477,6,0,2252175.6825917666,6 wallets | 2252175.68 ETH
+amount_based,MEDIUM,0.438,4,0,15902059.105262704,4 wallets | 15902059.11 ETH
+amount_based,MEDIUM,0.477,6,0,103219619.78813912,6 wallets | 103219619.79 ETH
+amount_based,MEDIUM,0.477,6,0,1790750.118447956,6 wallets | 1790750.12 ETH
+amount_based,MEDIUM,0.458,5,0,1511511.5976075141,5 wallets | 1511511.60 ETH
+amount_based,MEDIUM,0.438,4,0,2846688673.8599997,4 wallets | 2846688673.86 ETH
+amount_based,MEDIUM,0.438,4,0,325554394.68,4 wallets | 325554394.68 ETH
+amount_based,MEDIUM,0.458,5,0,2568432.9102554647,5 wallets | 2568432.91 ETH
+amount_based,MEDIUM,0.458,5,0,3400725.5799999996,5 wallets | 3400725.58 ETH
+amount_based,MEDIUM,0.458,5,0,2616685.5244172984,5 wallets | 2616685.52 ETH
+amount_based,MEDIUM,0.458,5,0,2166027.3782148603,5 wallets | 2166027.38 ETH
+amount_based,MEDIUM,0.477,6,0,13346949.379999999,6 wallets | 13346949.38 ETH
+amount_based,MEDIUM,0.438,4,0,149362905.0,4 wallets | 149362905.00 ETH
+amount_based,LOW,0.289,6,0,56.6809572359049,6 wallets | 56.68 ETH
+amount_based,MEDIUM,0.458,5,0,15657.356040794488,5 wallets | 15657.36 ETH
+amount_based,MEDIUM,0.538,9,0,5205589.136401655,9 wallets | 5205589.14 ETH
+amount_based,MEDIUM,0.558,13,0,69835.95489113899,13 wallets | 69835.95 ETH
+amount_based,MEDIUM,0.438,4,0,20428323.0,4 wallets | 20428323.00 ETH
+amount_based,MEDIUM,0.417,3,0,19363703.25,3 wallets | 19363703.25 ETH
+amount_based,MEDIUM,0.477,6,0,6159656.709847798,6 wallets | 6159656.71 ETH
+amount_based,MEDIUM,0.477,6,0,32653.006048340656,6 wallets | 32653.01 ETH
+amount_based,MEDIUM,0.438,4,0,10428231.72635047,4 wallets | 10428231.73 ETH
+amount_based,MEDIUM,0.458,5,0,1775404.1331074699,5 wallets | 1775404.13 ETH
+amount_based,MEDIUM,0.558,13,0,35000372.32000001,13 wallets | 35000372.32 ETH
+amount_based,MEDIUM,0.497,7,0,108000000.0,7 wallets | 108000000.00 ETH
+amount_based,MEDIUM,0.558,20,0,300000000.36,20 wallets | 300000000.36 ETH
+amount_based,MEDIUM,0.477,6,0,180000000.0,6 wallets | 180000000.00 ETH
+amount_based,MEDIUM,0.458,5,0,27000000.36780166,5 wallets | 27000000.37 ETH
+amount_based,LOW,0.36,24,0,10.985860156328581,24 wallets | 10.99 ETH
+amount_based,LOW,0.359,40,0,9.630817985106027,40 wallets | 9.63 ETH
+amount_based,LOW,0.36,22,0,14.68568297312143,22 wallets | 14.69 ETH
+amount_based,LOW,0.359,59,0,6.332411757679844,59 wallets | 6.33 ETH
+amount_based,LOW,0.36,15,0,11.532116446147201,15 wallets | 11.53 ETH
+amount_based,LOW,0.361,47,0,18.867575771043605,47 wallets | 18.87 ETH
+amount_based,LOW,0.36,11,0,11.744738876791999,11 wallets | 11.74 ETH
+amount_based,LOW,0.36,15,0,13.020590569138358,15 wallets | 13.02 ETH
+amount_based,LOW,0.259,5,0,6.595404301646,5 wallets | 6.60 ETH
+amount_based,LOW,0.339,9,0,6.666357529236738,9 wallets | 6.67 ETH
+amount_based,LOW,0.259,5,0,5.961129148226559,5 wallets | 5.96 ETH
+amount_based,LOW,0.36,19,0,11.95588559770048,19 wallets | 11.96 ETH
+amount_based,LOW,0.299,7,0,5.962171127576999,7 wallets | 5.96 ETH
+amount_based,LOW,0.36,26,0,12.976322493650082,26 wallets | 12.98 ETH
+amount_based,LOW,0.36,13,0,12.655206389063235,13 wallets | 12.66 ETH
+amount_based,LOW,0.258,5,0,4.784782508057,5 wallets | 4.78 ETH
+amount_based,MEDIUM,0.558,10,0,10000330.64,10 wallets | 10000330.64 ETH
+amount_based,MEDIUM,0.458,5,0,1260310.4964845136,5 wallets | 1260310.50 ETH
+amount_based,MEDIUM,0.458,5,0,6071912.903183811,5 wallets | 6071912.90 ETH
+amount_based,MEDIUM,0.438,4,0,194819699.2588656,4 wallets | 194819699.26 ETH
+amount_based,MEDIUM,0.438,4,0,26310238.799002886,4 wallets | 26310238.80 ETH
+amount_based,MEDIUM,0.458,5,0,35745.721155228865,5 wallets | 35745.72 ETH
+amount_based,MEDIUM,0.417,3,0,11342662.576201564,3 wallets | 11342662.58 ETH
+amount_based,MEDIUM,0.477,6,0,517728988.83805984,6 wallets | 517728988.84 ETH
+amount_based,MEDIUM,0.477,6,0,1872522.1825004383,6 wallets | 1872522.18 ETH
+amount_based,MEDIUM,0.477,6,0,800002510.3146476,6 wallets | 800002510.31 ETH
+amount_based,MEDIUM,0.438,4,0,3835801.3035063418,4 wallets | 3835801.30 ETH
+amount_based,MEDIUM,0.438,4,0,74688820.96016598,4 wallets | 74688820.96 ETH
+amount_based,MEDIUM,0.438,4,0,46474149.60945134,4 wallets | 46474149.61 ETH
+amount_based,MEDIUM,0.458,5,0,1752492.5425845427,5 wallets | 1752492.54 ETH
+amount_based,MEDIUM,0.458,5,0,1320527.2901323533,5 wallets | 1320527.29 ETH
+amount_based,MEDIUM,0.458,5,0,71744650.06,5 wallets | 71744650.06 ETH
+amount_based,MEDIUM,0.438,4,0,146058641.10000002,4 wallets | 146058641.10 ETH
+amount_based,MEDIUM,0.458,5,0,35928699.19873627,5 wallets | 35928699.20 ETH
+amount_based,MEDIUM,0.458,5,0,68355085.9,5 wallets | 68355085.90 ETH
+amount_based,MEDIUM,0.438,4,0,14250000.0,4 wallets | 14250000.00 ETH
+amount_based,MEDIUM,0.438,4,0,192700968.75,4 wallets | 192700968.75 ETH
+amount_based,MEDIUM,0.438,4,0,36788347.199999996,4 wallets | 36788347.20 ETH
+amount_based,MEDIUM,0.438,4,0,37050000.0,4 wallets | 37050000.00 ETH
+amount_based,MEDIUM,0.438,4,0,557831320.8,4 wallets | 557831320.80 ETH
+amount_based,MEDIUM,0.458,5,0,23257494.34563,5 wallets | 23257494.35 ETH
+amount_based,MEDIUM,0.438,4,0,3258218.8792366907,4 wallets | 3258218.88 ETH
+amount_based,MEDIUM,0.438,4,0,1199706.9093038489,4 wallets | 1199706.91 ETH
+amount_based,MEDIUM,0.477,6,0,24343.063202431735,6 wallets | 24343.06 ETH
+amount_based,MEDIUM,0.458,5,0,4132031.8147620233,5 wallets | 4132031.81 ETH
+amount_based,MEDIUM,0.458,5,0,1626584.9958476713,5 wallets | 1626585.00 ETH
+amount_based,MEDIUM,0.438,4,0,12120000720.0,4 wallets | 12120000720.00 ETH
+amount_based,MEDIUM,0.558,21,0,600000344.64,21 wallets | 600000344.64 ETH
+amount_based,MEDIUM,0.438,4,0,2309218.20752217,4 wallets | 2309218.21 ETH
+amount_based,MEDIUM,0.497,7,0,1000000000.0,7 wallets | 1000000000.00 ETH
+amount_based,MEDIUM,0.458,5,0,62453768.18670267,5 wallets | 62453768.19 ETH
+amount_based,MEDIUM,0.458,5,0,19428414.544931185,5 wallets | 19428414.54 ETH
+amount_based,MEDIUM,0.438,4,0,6980581.855189025,4 wallets | 6980581.86 ETH
+amount_based,MEDIUM,0.458,5,0,3299999998.0,5 wallets | 3299999998.00 ETH
+amount_based,MEDIUM,0.458,5,0,3002285.5356199997,5 wallets | 3002285.54 ETH
+amount_based,MEDIUM,0.438,4,0,10572000.0,4 wallets | 10572000.00 ETH
+amount_based,MEDIUM,0.458,5,0,15028163.891142208,5 wallets | 15028163.89 ETH
+amount_based,MEDIUM,0.458,5,0,306397.01207332936,5 wallets | 306397.01 ETH
+amount_based,MEDIUM,0.558,14,0,270000345.34102184,14 wallets | 270000345.34 ETH
+amount_based,MEDIUM,0.438,4,0,960000.0,4 wallets | 960000.00 ETH
+amount_based,MEDIUM,0.458,5,0,2399999.9999999995,5 wallets | 2400000.00 ETH
+amount_based,MEDIUM,0.458,5,0,12918006.24677403,5 wallets | 12918006.25 ETH
+amount_based,MEDIUM,0.417,3,0,455867499.36870664,3 wallets | 455867499.37 ETH
+amount_based,MEDIUM,0.458,5,0,48875790.85566348,5 wallets | 48875790.86 ETH
+amount_based,MEDIUM,0.458,5,0,616168855.9838803,5 wallets | 616168855.98 ETH
+amount_based,MEDIUM,0.458,5,0,775520788.004211,5 wallets | 775520788.00 ETH
+amount_based,MEDIUM,0.458,5,0,2327113714.021784,5 wallets | 2327113714.02 ETH
+amount_based,MEDIUM,0.438,4,0,1323684137.9310346,4 wallets | 1323684137.93 ETH
+amount_based,MEDIUM,0.458,5,0,6900000000.0,5 wallets | 6900000000.00 ETH
+amount_based,MEDIUM,0.558,11,0,700000000.0,11 wallets | 700000000.00 ETH
+amount_based,MEDIUM,0.458,5,0,315000000.0,5 wallets | 315000000.00 ETH
+amount_based,MEDIUM,0.558,10,0,6000000000.0,10 wallets | 6000000000.00 ETH
+amount_based,MEDIUM,0.438,4,0,5395790061.712683,4 wallets | 5395790061.71 ETH
+amount_based,MEDIUM,0.438,4,0,621493582.8615112,4 wallets | 621493582.86 ETH
+amount_based,MEDIUM,0.558,10,0,3000000000.0594187,10 wallets | 3000000000.06 ETH
+amount_based,MEDIUM,0.438,4,0,358589.931579759,4 wallets | 358589.93 ETH
+amount_based,MEDIUM,0.497,7,0,35505569.40679149,7 wallets | 35505569.41 ETH
+amount_based,MEDIUM,0.477,6,0,1296027.7189708557,6 wallets | 1296027.72 ETH
+amount_based,MEDIUM,0.477,6,0,64000000.0,6 wallets | 64000000.00 ETH
+amount_based,MEDIUM,0.477,6,0,7500047.599811533,6 wallets | 7500047.60 ETH
+amount_based,MEDIUM,0.458,5,0,18397144.29548173,5 wallets | 18397144.30 ETH
+amount_based,MEDIUM,0.417,3,0,3124933.334,3 wallets | 3124933.33 ETH
+amount_based,MEDIUM,0.465,8,0,735.8051016082488,8 wallets | 735.81 ETH
+amount_based,MEDIUM,0.458,5,0,14675187.595784917,5 wallets | 14675187.60 ETH
+amount_based,MEDIUM,0.438,4,0,12000300.0,4 wallets | 12000300.00 ETH
+amount_based,MEDIUM,0.438,4,0,229484633.82,4 wallets | 229484633.82 ETH
+amount_based,MEDIUM,0.438,4,0,91424808.701031,4 wallets | 91424808.70 ETH
+amount_based,MEDIUM,0.438,4,0,11970002760.0,4 wallets | 11970002760.00 ETH
+amount_based,MEDIUM,0.458,5,0,624647009.31318,5 wallets | 624647009.31 ETH
+amount_based,MEDIUM,0.438,4,0,1850562.8750628966,4 wallets | 1850562.88 ETH
+reciprocal_trading,LOW,0.332,0,0,0,
+reciprocal_trading,LOW,0.332,0,0,0,
+reciprocal_trading,LOW,0.332,0,0,0,
+reciprocal_trading,LOW,0.332,0,0,0,
+circular_trading,MEDIUM,0.586,0,0,305196150.12,
+common_source_with_whales,HIGH,0.722,108,2,1314601222863.13,108 wallets | 2 whales
+highly_connected_with_whales,MEDIUM,0.475,269,1,0,269 wallets | 1 whales
+highly_connected_with_whales,MEDIUM,0.505,400,2,0,400 wallets | 2 whales
+highly_connected_with_whales,MEDIUM,0.505,247,2,0,247 wallets | 2 whales
+highly_connected_with_whales,MEDIUM,0.535,458,3,0,458 wallets | 3 whales
+highly_connected_with_whales,MEDIUM,0.595,237,5,0,237 wallets | 5 whales
+highly_connected_with_whales,MEDIUM,0.535,197,3,0,197 wallets | 3 whales
+amount_based_with_whales,MEDIUM,0.583,8,1,3959836.0579752987,8 wallets | 3959836.06 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.562,7,1,12985311.73629114,7 wallets | 12985311.74 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.593,7,2,6000000.0,7 wallets | 6000000.00 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,2000122.5035063906,5 wallets | 2000122.50 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.562,7,1,2969027.377775893,7 wallets | 2969027.38 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,3129293.474444166,6 wallets | 3129293.47 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,900000000.0,5 wallets | 900000000.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.593,7,2,3159424.3060449385,7 wallets | 3159424.31 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,17079446.23063895,6 wallets | 17079446.23 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.532,4,2,659933.78,4 wallets | 659933.78 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,636706.3200000001,5 wallets | 636706.32 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,3263738.0049443045,5 wallets | 3263738.00 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,34,1,210000142.32,34 wallets | 210000142.32 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,13352464.18325686,6 wallets | 13352464.18 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,6942549.340679271,5 wallets | 6942549.34 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,752831.616911128,5 wallets | 752831.62 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.483,3,1,305196150.12,3 wallets | 305196150.12 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.573,6,2,839588.0,6 wallets | 839588.00 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,1366905.0,4 wallets | 1366905.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,4337444.0,5 wallets | 4337444.00 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,19,1,10000000.0,19 wallets | 10000000.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,24337985.200000003,5 wallets | 24337985.20 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.483,3,1,764857200.0,3 wallets | 764857200.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,8791639.90925,6 wallets | 8791639.91 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.552,5,2,2985244.1493210774,5 wallets | 2985244.15 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,24000000.0,6 wallets | 24000000.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,13424362.229179949,6 wallets | 13424362.23 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,1683285.52037478,5 wallets | 1683285.52 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,4891738420.0,5 wallets | 4891738420.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,360000000.0,6 wallets | 360000000.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,671415.89819741,4 wallets | 671415.90 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,5819423.082735133,5 wallets | 5819423.08 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,17852741.35506,6 wallets | 17852741.36 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,18720619200.0,4 wallets | 18720619200.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,30110437.660310995,6 wallets | 30110437.66 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,25248701.3779641,4 wallets | 25248701.38 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,3227052.1363491905,5 wallets | 3227052.14 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,13465879.466494413,5 wallets | 13465879.47 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.562,7,1,5197404.171239226,7 wallets | 5197404.17 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,3519741.0480965823,5 wallets | 3519741.05 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,163246.21197961763,5 wallets | 163246.21 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.552,5,2,434846.65929538786,5 wallets | 434846.66 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,617385191.8228025,4 wallets | 617385191.82 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.423,48,1,0.00010131588924870695,48 wallets | 0.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,197522.04219850418,5 wallets | 197522.04 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,15,1,126204.57174275212,15 wallets | 126204.57 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.485,59,3,11.662232730579012,59 wallets | 11.66 ETH | 3 whales
+amount_based_with_whales,MEDIUM,0.583,8,1,130828.08030856913,8 wallets | 130828.08 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,14144348.19666456,5 wallets | 14144348.20 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,2375663.091168275,5 wallets | 2375663.09 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.552,5,2,4017293.3965127086,5 wallets | 4017293.40 ETH | 2 whales
+amount_based_with_whales,HIGH,0.603,9,1,29349.752023241792,9 wallets | 29349.75 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,2012720.305951808,6 wallets | 2012720.31 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,231126.06230193653,6 wallets | 231126.06 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,10,1,104466.34424706968,10 wallets | 104466.34 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,618581.4181785793,6 wallets | 618581.42 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.583,8,1,15194.840875020054,8 wallets | 15194.84 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.552,5,2,369906.2482399249,5 wallets | 369906.25 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.562,7,1,475588.64099016145,7 wallets | 475588.64 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,38462792.79407228,5 wallets | 38462792.79 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,1511511.5976075141,5 wallets | 1511511.60 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,2846688673.8599997,4 wallets | 2846688673.86 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.532,4,2,325554394.68,4 wallets | 325554394.68 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,2568432.9102554647,5 wallets | 2568432.91 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,3400725.5799999996,5 wallets | 3400725.58 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,2616685.5244172984,5 wallets | 2616685.52 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,2166027.3782148603,5 wallets | 2166027.38 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,13346949.379999999,6 wallets | 13346949.38 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,149362905.0,4 wallets | 149362905.00 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,13,1,69835.95489113899,13 wallets | 69835.95 ETH | 1 whales
+amount_based_with_whales,HIGH,0.653,20,2,300000000.36,20 wallets | 300000000.36 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,180000000.0,6 wallets | 180000000.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.425,24,1,10.985860156328581,24 wallets | 10.99 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.454,40,2,9.630817985106027,40 wallets | 9.63 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.425,22,1,14.68568297312143,22 wallets | 14.69 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.424,59,1,6.332411757679844,59 wallets | 6.33 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.456,47,2,18.867575771043605,47 wallets | 18.87 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.455,15,2,13.020590569138358,15 wallets | 13.02 ETH | 2 whales
+amount_based_with_whales,LOW,0.324,5,1,6.595404301646,5 wallets | 6.60 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.425,19,1,11.95588559770048,19 wallets | 11.96 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.425,26,1,12.976322493650082,26 wallets | 12.98 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,10,1,10000330.64,10 wallets | 10000330.64 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,1872522.1825004383,6 wallets | 1872522.18 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,800002510.3146476,6 wallets | 800002510.31 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,71744650.06,5 wallets | 71744650.06 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,146058641.10000002,4 wallets | 146058641.10 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,192700968.75,4 wallets | 192700968.75 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,36788347.199999996,4 wallets | 36788347.20 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,37050000.0,4 wallets | 37050000.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,557831320.8,4 wallets | 557831320.80 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,12120000720.0,4 wallets | 12120000720.00 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,21,1,600000344.64,21 wallets | 600000344.64 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,3299999998.0,5 wallets | 3299999998.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,306397.01207332936,5 wallets | 306397.01 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,14,1,270000345.34102184,14 wallets | 270000345.34 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,775520788.004211,5 wallets | 775520788.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,2327113714.021784,5 wallets | 2327113714.02 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,6900000000.0,5 wallets | 6900000000.00 ETH | 1 whales
+amount_based_with_whales,HIGH,0.623,11,1,700000000.0,11 wallets | 700000000.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.542,6,1,1296027.7189708557,6 wallets | 1296027.72 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.56,8,2,735.8051016082488,8 wallets | 735.81 ETH | 2 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,11970002760.0,4 wallets | 11970002760.00 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.522,5,1,624647009.31318,5 wallets | 624647009.31 ETH | 1 whales
+amount_based_with_whales,MEDIUM,0.503,4,1,1850562.8750628966,4 wallets | 1850562.88 ETH | 1 whales

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Zap, AlertTriangle } from "lucide-react";
 import { Toaster, toast } from "sonner";
 import Header from "@/components/Header";
@@ -6,8 +6,10 @@ import SearchSection from "@/components/SearchSection";
 import GraphVisualization from "@/components/GraphVisualization";
 import RiskDashboard from "@/components/RiskDashboard";
 import AnalysisResults from "@/components/AnalysisResults";
+import NodeDetailsModal from "@/components/NodeDetailsModal";
 import { generateMockData, SAMPLE_TOKENS } from "@/lib/mockData";
-import type { AnalysisData } from "@/lib/mockData";
+import type { AnalysisData, Node } from "@/lib/mockData";
+import * as analysisService from "@/services/analysisService";
 
 /**
  * BlockStat Forensic Graph Agent - Main Application
@@ -25,6 +27,69 @@ export default function Home() {
   const [highlightedWallet, setHighlightedWallet] = useState<string | null>(
     null
   );
+  const [selectedNode, setSelectedNode] = useState<Node | null>(null);
+  const [backendAvailable, setBackendAvailable] = useState(true);
+  const [currentAnalysisId, setCurrentAnalysisId] = useState<string | null>(
+    null
+  );
+
+  // Check if backend is available on mount
+  useEffect(() => {
+    checkBackendHealth();
+  }, []);
+
+  const checkBackendHealth = async () => {
+    try {
+      const isHealthy = await analysisService.healthCheck();
+      setBackendAvailable(isHealthy);
+      if (!isHealthy) {
+        console.warn("Backend not available, falling back to mock data");
+      }
+    } catch (error) {
+      console.warn("Backend health check failed:", error);
+      setBackendAvailable(false);
+    }
+  };
+
+  const pollAnalysisStatus = async (analysisId: string) => {
+    try {
+      const maxAttempts = 600; // 10 minutes with 1 second intervals
+      let attempts = 0;
+
+      while (attempts < maxAttempts) {
+        const status = await analysisService.checkAnalysisStatus(analysisId);
+
+        // Update progress
+        toast.loading(
+          `Analyzing... ${status.progress}% - ${status.currentStep}`
+        );
+
+        if (status.status === "completed") {
+          // Fetch the results
+          const results = await analysisService.getAnalysisResults(analysisId);
+          setAnalysisData(results as any);
+          setCurrentAnalysisId(analysisId);
+          toast.success("Analysis complete! Forensic graph loaded.");
+          return;
+        } else if (status.status === "failed") {
+          toast.error(`Analysis failed: ${status.errorMessage}`);
+          setIsLoading(false);
+          return;
+        }
+
+        // Wait 1 second before next poll
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        attempts++;
+      }
+
+      toast.error("Analysis timeout - please try again");
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error polling status:", error);
+      toast.error("Failed to poll analysis status");
+      setIsLoading(false);
+    }
+  };
 
   const handleAnalyze = async (tokenAddress: string) => {
     if (!tokenAddress.trim()) {
@@ -32,17 +97,53 @@ export default function Home() {
       return;
     }
 
+    if (!tokenAddress.startsWith("0x") || tokenAddress.length !== 42) {
+      toast.error(
+        "Invalid token address format (should be 0x followed by 40 hex characters)"
+      );
+      return;
+    }
+
     setSelectedTokenAddress(tokenAddress);
     setIsLoading(true);
-    toast.loading("Analyzing token forensics...");
 
-    // Simulate API call delay
-    setTimeout(() => {
-      const data = generateMockData(tokenAddress);
-      setAnalysisData(data);
-      setIsLoading(false);
-      toast.success("Analysis complete - forensic graph loaded");
-    }, 2000);
+    try {
+      if (backendAvailable) {
+        // Use real backend API
+        toast.loading("Submitting analysis to backend...");
+        const response = await analysisService.submitAnalysis({
+          tokenAddress,
+          daysBack: 7,
+          sampleSize: 5000,
+        });
+
+        toast.loading("Analysis queued... waiting for results");
+        setCurrentAnalysisId(response.analysisId);
+        await pollAnalysisStatus(response.analysisId);
+      } else {
+        // Fallback to mock data
+        toast.loading("Using mock data (backend unavailable)...");
+        setTimeout(() => {
+          const data = generateMockData(tokenAddress);
+          setAnalysisData(data);
+          setIsLoading(false);
+          toast.success("Mock analysis complete - forensic graph loaded");
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Analysis error:", error);
+
+      // Fallback to mock data on error
+      if (backendAvailable) {
+        toast.info("Backend error - falling back to mock data");
+        const data = generateMockData(tokenAddress);
+        setAnalysisData(data);
+        setIsLoading(false);
+      } else {
+        toast.error("Analysis failed and backend is unavailable");
+        setIsLoading(false);
+      }
+    }
   };
 
   const handleSampleTokenClick = (address: string) => {
@@ -205,6 +306,7 @@ export default function Home() {
                   data={analysisData}
                   highlightedWallet={highlightedWallet}
                   onWalletSelect={handleWalletHighlight}
+                  onNodeClick={setSelectedNode}
                 />
               </div>
 
@@ -221,6 +323,13 @@ export default function Home() {
             <AnalysisResults
               data={analysisData}
               onWalletHighlight={handleWalletHighlight}
+            />
+
+            {/* Node Details Modal */}
+            <NodeDetailsModal
+              node={selectedNode}
+              data={analysisData}
+              onClose={() => setSelectedNode(null)}
             />
           </div>
         )}
