@@ -722,7 +722,89 @@ class ForensicGraphAgent:
         print(f"✅ {len(wash_patterns)} patterns de wash trading détectés")
         return wash_patterns
     
+    def detect_wash_trading_sampling(self, sample_size=1000, max_cycles=50):
+        """Version avec échantillonnage pour très grands graphes"""
+        print(f"\n🔄 Détection de wash trading (échantillonnage de {sample_size} nœuds)...")
     
+        wash_patterns = []
+    
+        # Échantillonner les nœuds pour l'analyse
+        all_nodes = list(self.combined_G.nodes())
+    
+        if len(all_nodes) > sample_size:
+            import random
+            random.seed(42)  # Pour la reproductibilité
+            sampled_nodes = random.sample(all_nodes, sample_size)
+            print(f"   • Échantillon de {sample_size} nœuds sur {len(all_nodes)}")
+        else:
+            sampled_nodes = all_nodes
+    
+        # Sous-graphe pour l'analyse
+        subgraph = self.combined_G.subgraph(sampled_nodes).copy()
+    
+        # 1. Paires réciproques dans le sous-graphe
+        reciprocal_pairs = []
+        for u, v in subgraph.edges():
+            if subgraph.has_edge(v, u):
+                vol_u_to_v = subgraph[u][v].get('total_amount', 0)
+                vol_v_to_u = subgraph[v][u].get('total_amount', 0)
+            
+                if vol_u_to_v > 0 and vol_v_to_u > 0:
+                    ratio = min(vol_u_to_v, vol_v_to_u) / max(vol_u_to_v, vol_v_to_u)
+                
+                    if ratio > 0.8:
+                        reciprocal_pairs.append({
+                        'pair': [u, v],
+                        'volume_AB': vol_u_to_v,
+                        'volume_BA': vol_v_to_u,
+                        'similarity_ratio': ratio
+                        })
+    
+        # 2. Triangles dans le sous-graphe (algorithme optimisé)
+        triangles = []
+        for u in sampled_nodes:
+            for v in subgraph.successors(u):
+                for w in subgraph.successors(v):
+                    if subgraph.has_edge(w, u):
+                        triangle = sorted([u, v, w])
+                        triangle_key = tuple(triangle)
+                    
+                        if not any(tuple(sorted(existing)) == triangle_key for existing in triangles):
+                            triangles.append([u, v, w])
+                        
+                            if len(triangles) >= max_cycles:
+                                break
+                if len(triangles) >= max_cycles:
+                    break
+            if len(triangles) >= max_cycles:
+                break
+    
+        # Combiner les résultats
+        wash_patterns.extend([{
+            'type': 'reciprocal_trading',
+            **pair
+        } for pair in reciprocal_pairs])
+    
+        wash_patterns.extend([{
+        'type': 'circular_trading',
+        'cycle': triangle,
+        'length': 3,
+        'total_volume': self._calculate_cycle_volume_in_graph(triangle, subgraph),
+        'avg_volume': self._calculate_cycle_volume_in_graph(triangle, subgraph) / 3
+        } for triangle in triangles])
+    
+        print(f"✅ {len(wash_patterns)} patterns de wash trading détectés")
+        return wash_patterns
+
+    
+    def _calculate_cycle_volume_in_graph(self, cycle, graph):
+        """Calcule le volume total d'un cycle dans un graphe spécifique"""
+        total = 0
+        for i in range(len(cycle)):
+            sender = cycle[i]
+            receiver = cycle[(i + 1) % len(cycle)]
+            total += graph[sender][receiver].get('total_amount', 0)
+        return total
     
     def detect_mixer_patterns(self):
         """Détecte les patterns de mixers (tumblers)"""
@@ -845,7 +927,7 @@ class ForensicGraphAgent:
         # all_clusters.extend(funding_patterns)
         
         print("\n5. Patterns de wash trading...")
-        wash_patterns = self.detect_wash_trading_patterns()
+        wash_patterns = self.detect_wash_trading_sampling()
         all_clusters.extend(wash_patterns)
         
         # print("\n6. Patterns de mixers...")
