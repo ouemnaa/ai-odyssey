@@ -7,6 +7,7 @@ interface GraphVisualizationProps {
   data: AnalysisData;
   highlightedWallet: string | null;
   onWalletSelect: (walletId: string | null) => void;
+  onNodeClick?: (node: Node) => void;
 }
 
 /**
@@ -23,6 +24,7 @@ export default function GraphVisualization({
   data,
   highlightedWallet,
   onWalletSelect,
+  onNodeClick,
 }: GraphVisualizationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<any>(null);
@@ -138,6 +140,9 @@ export default function GraphVisualization({
   // Handle node click
   const handleNodeClick = (node: Node) => {
     onWalletSelect(highlightedWallet === node.id ? null : node.id);
+    if (onNodeClick) {
+      onNodeClick(node);
+    }
   };
 
   return (
