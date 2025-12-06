@@ -1490,16 +1490,15 @@ class ForensicGraphAgent:
         return " | ".join(desc_parts)
 
 
-def main_real_data(token_contract_address=None, transaction_limit=10000, days_back=1):
+def main_real_data(token_contract_address=None):
     """Fonction principale pour l'analyse avec données réelles"""
-    BITQUERY_API_KEY = "ory_at_GvkHmlXX6ZDpF96XMfO9J4pEk-ZdqPAMzqcEKCATCAI.KIdkp5fUfNMeBjoxi49d4onFazuqXCFYgHAGadfHG8Q"
+    BITQUERY_API_KEY = ""
     
     print("\n" + "=" * 70)
     if token_contract_address:
         print(f"🔍 FORENSIC GRAPH AGENT - TOKEN ANALYSIS: {token_contract_address[:30]}...")
     else:
         print("🔍 FORENSIC GRAPH AGENT - DONNÉES RÉELLES")
-    print(f"📊 Fetching up to {transaction_limit:,} transactions from {days_back} day(s)")
     print("=" * 70)
     
     # 1. Initialiser l'agent
@@ -1511,8 +1510,8 @@ def main_real_data(token_contract_address=None, transaction_limit=10000, days_ba
     if token_contract_address:
         # Analyse d'un token spécifique
         all_transactions = agent.fetch_real_transactions(
-            days_back=days_back, 
-            limit=transaction_limit, 
+            days_back=1, 
+            limit=5000, 
             token_contract_address=token_contract_address
         )
         
@@ -1521,14 +1520,14 @@ def main_real_data(token_contract_address=None, transaction_limit=10000, days_ba
             
             # Récupérer les transactions internes pour ce token
             internal_txs = agent.fetch_real_internal_transactions(
-                limit=2000, 
+                limit=500, 
                 token_contract_address=token_contract_address
             )
             
             # Récupérer les holders de ce token
             token_holders = agent.fetch_real_token_holders(
                 token_address=token_contract_address, 
-                limit=100
+                limit=50
             )
             agent.token_holders = token_holders
         else:
@@ -1540,7 +1539,7 @@ def main_real_data(token_contract_address=None, transaction_limit=10000, days_ba
         all_transactions = []
         
         for currency in currencies[:2]:  # Essayer les 2 premières
-            transactions = agent.fetch_real_transactions(days_back=days_back, limit=transaction_limit, currency=currency)
+            transactions = agent.fetch_real_transactions(days_back=1, limit=5000, currency=currency)
             if transactions:
                 all_transactions.extend(transactions)
                 print(f"   ✅ Ajouté {len(transactions)} transactions {currency}")
@@ -1553,7 +1552,7 @@ def main_real_data(token_contract_address=None, transaction_limit=10000, days_ba
         agent.transactions_cache = all_transactions
         
         # Récupérer les transactions internes
-        internal_txs = agent.fetch_real_internal_transactions(limit=2000)
+        internal_txs = agent.fetch_real_internal_transactions(limit=500)
         
         # Récupérer les token holders pour USDT par défaut
         token_holders = agent.fetch_real_token_holders(limit=50)
@@ -1598,10 +1597,10 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='Forensic Graph Agent - Analyse de données blockchain')
     parser.add_argument('--token', type=str, help='Adresse du token contract à analyser')
-    parser.add_argument('--days', type=int, default=3, help='Nombre de jours en arrière (défaut: 3)')
-    parser.add_argument('--limit', type=int, default=10000, help='Limite de transactions (défaut: 10000)')
+    parser.add_argument('--days', type=int, default=1, help='Nombre de jours en arrière (défaut: 7)')
+    parser.add_argument('--limit', type=int, default=5000, help='Limite de transactions (défaut: 5000)')
     
-    args = parser.parse_args()
+    # args = parser.parse_args()
     
     print("\n🔧 FORENSIC GRAPH AGENT v3.0 - REAL DATA MODE")
     print("   Analyse forensic avec données blockchain réelles")
@@ -1622,22 +1621,12 @@ if __name__ == "__main__":
     
     # Exécuter l'analyse
     start_time = time.time()
-    
-    # Use token from args, or fallback to default
-    token = args.token or "0x6982508145454ce325ddbe47a25d4ec3d2311933"
-    days_back = args.days
-    transaction_limit = args.limit
+    token = "0x6982508145454ce325ddbe47a25d4ec3d2311933"
     
     try:
         if token:
             print(f"\n🎯 Analyse du token: {token}")
-            print(f"📊 Paramètres: {transaction_limit:,} transactions, {days_back} jours")
-            # Fetch transactions with specified parameters
-            results = main_real_data(
-                token_contract_address=token,
-                transaction_limit=transaction_limit,
-                days_back=days_back
-            )
+            results = main_real_data(token_contract_address=token)
         else:
             print("\n🎯 Analyse générique (ETH)")
             results = main_real_data()
