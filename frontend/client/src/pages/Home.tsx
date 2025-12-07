@@ -32,6 +32,9 @@ export default function Home() {
   const [currentAnalysisId, setCurrentAnalysisId] = useState<string | null>(
     null
   );
+  const [analysisTimings, setAnalysisTimings] = useState<
+    Record<string, string>
+  >({});
 
   // Check if backend is available on mount
   useEffect(() => {
@@ -59,17 +62,38 @@ export default function Home() {
       while (attempts < maxAttempts) {
         const status = await analysisService.checkAnalysisStatus(analysisId);
 
-        // Update progress
-        toast.loading(
-          `Analyzing... ${status.progress}% - ${status.currentStep}`
-        );
+        // Update progress with timing info
+        let toastMessage = `Analyzing... ${status.progress}% - ${status.currentStep}`;
+        if (status.totalDuration) {
+          toastMessage += ` [${status.totalDuration}]`;
+        }
+        toast.loading(toastMessage);
+
+        // Store step timings for display
+        if (status.stepTimings) {
+          setAnalysisTimings(status.stepTimings);
+        }
 
         if (status.status === "completed") {
           // Fetch the results
           const results = await analysisService.getAnalysisResults(analysisId);
           setAnalysisData(results as any);
           setCurrentAnalysisId(analysisId);
-          toast.success("Analysis complete! Forensic graph loaded.");
+
+          // Display final timings
+          const timingsSummary = status.stepTimings
+            ? Object.entries(status.stepTimings)
+                .map(([step, time]) => `${step}: ${time}`)
+                .join(" | ")
+            : "";
+
+          if (timingsSummary) {
+            toast.success(
+              `Analysis complete in ${status.totalDuration}! Timings: ${timingsSummary}`
+            );
+          } else {
+            toast.success("Analysis complete! Forensic graph loaded.");
+          }
           return;
         } else if (status.status === "failed") {
           toast.error(`Analysis failed: ${status.errorMessage}`);
@@ -171,6 +195,22 @@ export default function Home() {
           // Initial state / Landing view
           <div className="min-h-screen flex flex-col items-center justify-center px-4">
             <div className="max-w-2xl w-full space-y-12">
+              {/* Loading with timings display */}
+              {isLoading && Object.keys(analysisTimings).length > 0 && (
+                <div className="fixed top-20 right-4 bg-dark-bg border border-neon-green/50 rounded p-4 max-w-sm text-sm">
+                  <p className="text-neon-green font-bold mb-2">
+                    ⏱️ Analysis Timings:
+                  </p>
+                  <div className="space-y-1 text-text-secondary">
+                    {Object.entries(analysisTimings).map(([step, time]) => (
+                      <div key={step} className="flex justify-between gap-2">
+                        <span>{step.replace(/_/g, " ")}:</span>
+                        <span className="text-neon-green">{time}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
               {/* Hero Section */}
               <div className="text-center space-y-6">
                 <div className="space-y-2">
@@ -315,6 +355,7 @@ export default function Home() {
                 <RiskDashboard
                   data={analysisData}
                   onWalletHighlight={handleWalletHighlight}
+                  timings={analysisTimings}
                 />
               </div>
             </div>

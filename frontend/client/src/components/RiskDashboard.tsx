@@ -1,14 +1,15 @@
-import { AlertTriangle, TrendingUp, Zap, Activity } from 'lucide-react';
-import type { AnalysisData } from '@/lib/mockData';
+import { AlertTriangle, TrendingUp, Zap, Activity } from "lucide-react";
+import type { AnalysisData } from "@/lib/mockData";
 
 interface RiskDashboardProps {
   data: AnalysisData;
   onWalletHighlight: (walletId: string | null) => void;
+  timings?: Record<string, string>;
 }
 
 /**
  * RiskDashboard Component - Risk Metrics Panel
- * 
+ *
  * Design: Cyberpunk dashboard with color-coded risk levels
  * - Overall risk score with gradient color (green=safe, yellow=caution, red=danger)
  * - Key metrics cards with icons
@@ -17,17 +18,18 @@ interface RiskDashboardProps {
 export default function RiskDashboard({
   data,
   onWalletHighlight,
+  timings,
 }: RiskDashboardProps) {
   const getRiskColor = (score: number): string => {
-    if (score < 30) return '#00ff41'; // Green - Safe
-    if (score < 60) return '#ffaa00'; // Orange - Caution
-    return '#ff0055'; // Pink - Danger
+    if (score < 30) return "#00ff41"; // Green - Safe
+    if (score < 60) return "#ffaa00"; // Orange - Caution
+    return "#ff0055"; // Pink - Danger
   };
 
   const getRiskLabel = (score: number): string => {
-    if (score < 30) return 'SAFE';
-    if (score < 60) return 'CAUTION';
-    return 'DANGER';
+    if (score < 30) return "SAFE";
+    if (score < 60) return "CAUTION";
+    return "DANGER";
   };
 
   const riskColor = getRiskColor(data.riskScore);
@@ -35,32 +37,33 @@ export default function RiskDashboard({
 
   const metrics = [
     {
-      label: 'GINI COEFFICIENT',
+      label: "GINI COEFFICIENT",
       value: data.metrics.giniCoefficient.toFixed(2),
       icon: TrendingUp,
-      description: 'Wealth concentration (0-1)',
-      color: data.metrics.giniCoefficient > 0.85 ? '#ff0055' : '#ffaa00',
+      description: "Wealth concentration (0-1)",
+      color: data.metrics.giniCoefficient > 0.85 ? "#ff0055" : "#ffaa00",
     },
     {
-      label: 'WASH TRADING SCORE',
+      label: "WASH TRADING SCORE",
       value: `${data.metrics.washTradingScore}%`,
       icon: Activity,
-      description: 'Suspicious trading patterns',
-      color: data.metrics.washTradingScore > 70 ? '#ff0055' : '#ffaa00',
+      description: "Suspicious trading patterns",
+      color: data.metrics.washTradingScore > 70 ? "#ff0055" : "#ffaa00",
     },
     {
-      label: 'MIXER CONNECTIONS',
+      label: "MIXER CONNECTIONS",
       value: data.metrics.mixerConnectionsCount,
       icon: Zap,
-      description: 'Privacy mixer links detected',
-      color: data.metrics.mixerConnectionsCount > 0 ? '#ff0055' : '#00ff41',
+      description: "Privacy mixer links detected",
+      color: data.metrics.mixerConnectionsCount > 0 ? "#ff0055" : "#00ff41",
     },
     {
-      label: 'SUSPICIOUS CLUSTERS',
+      label: "SUSPICIOUS CLUSTERS",
       value: data.metrics.suspiciousClustersDetected,
       icon: AlertTriangle,
-      description: 'Coordinated wallet groups',
-      color: data.metrics.suspiciousClustersDetected > 0 ? '#ff0055' : '#00ff41',
+      description: "Coordinated wallet groups",
+      color:
+        data.metrics.suspiciousClustersDetected > 0 ? "#ff0055" : "#00ff41",
     },
   ];
 
@@ -68,10 +71,14 @@ export default function RiskDashboard({
     <div className="space-y-4">
       {/* Overall Risk Score */}
       <div className="neon-card p-6 text-center">
-        <p className="text-xs text-text-secondary mb-3 tracking-widest">OVERALL RISK SCORE</p>
+        <p className="text-xs text-text-secondary mb-3 tracking-widest">
+          OVERALL RISK SCORE
+        </p>
         <div className="relative mb-4">
           <div className="text-5xl font-bold" style={{ color: riskColor }}>
-            {data.riskScore}
+            {typeof data.riskScore === "number"
+              ? data.riskScore.toFixed(3)
+              : data.riskScore}
           </div>
           <div className="text-xs text-text-secondary mt-2 tracking-widest">
             {riskLabel}
@@ -92,7 +99,7 @@ export default function RiskDashboard({
 
       {/* Metrics Grid */}
       <div className="grid grid-cols-2 gap-3">
-        {metrics.map((metric) => {
+        {metrics.map(metric => {
           const Icon = metric.icon;
           return (
             <div key={metric.label} className="neon-card p-3">
@@ -110,10 +117,7 @@ export default function RiskDashboard({
                   </p>
                 </div>
               </div>
-              <p
-                className="text-lg font-bold"
-                style={{ color: metric.color }}
-              >
+              <p className="text-lg font-bold" style={{ color: metric.color }}>
                 {metric.value}
               </p>
             </div>
@@ -127,20 +131,20 @@ export default function RiskDashboard({
           <h3 className="text-sm font-bold text-neon-green">TOP WALLETS</h3>
         </div>
         <div className="divide-y divide-neon-green/10">
-          {data.topInfluentialWallets.map((wallet) => {
+          {data.topInfluentialWallets.map(wallet => {
             const riskBgColor =
-              wallet.riskLevel === 'critical'
-                ? 'bg-neon-pink/20'
-                : wallet.riskLevel === 'high'
-                  ? 'bg-orange-500/20'
-                  : 'bg-neon-green/20';
+              wallet.riskLevel === "critical"
+                ? "bg-neon-pink/20"
+                : wallet.riskLevel === "high"
+                  ? "bg-orange-500/20"
+                  : "bg-neon-green/20";
 
             const riskTextColor =
-              wallet.riskLevel === 'critical'
-                ? 'text-neon-pink'
-                : wallet.riskLevel === 'high'
-                  ? 'text-orange-500'
-                  : 'text-neon-green';
+              wallet.riskLevel === "critical"
+                ? "text-neon-pink"
+                : wallet.riskLevel === "high"
+                  ? "text-orange-500"
+                  : "text-neon-green";
 
             return (
               <button
@@ -152,7 +156,9 @@ export default function RiskDashboard({
                   <p className="text-xs font-mono text-text-secondary truncate">
                     {wallet.address.substring(0, 12)}...
                   </p>
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded ${riskBgColor} ${riskTextColor}`}>
+                  <span
+                    className={`text-xs font-bold px-2 py-0.5 rounded ${riskBgColor} ${riskTextColor}`}
+                  >
                     {wallet.riskLevel.toUpperCase()}
                   </span>
                 </div>
@@ -169,6 +175,23 @@ export default function RiskDashboard({
           })}
         </div>
       </div>
+
+      {/* Timing Information - if available */}
+      {timings && Object.keys(timings).length > 0 && (
+        <div className="neon-card p-4 text-xs">
+          <p className="text-neon-green font-bold mb-2 tracking-widest">
+            ⏱️ ANALYSIS TIMINGS
+          </p>
+          <div className="space-y-1 text-text-secondary font-mono">
+            {Object.entries(timings).map(([step, time]) => (
+              <div key={step} className="flex justify-between gap-2">
+                <span>{step.replace(/_/g, " ")}</span>
+                <span className="text-neon-cyan">{time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

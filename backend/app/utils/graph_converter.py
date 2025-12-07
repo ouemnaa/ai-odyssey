@@ -65,9 +65,9 @@ def convert_forensic_output_to_analysis_data(
 
         # Calculate overall risk score
         risk_score = _calculate_risk_score(metrics, red_flags)
-        logger.info(f"Overall risk score: {risk_score:.1f}")
+        logger.info(f"Overall risk score: {risk_score:.3f}")
 
-        logger.info(f"Successfully converted forensic data: {len(nodes)} nodes, {len(links)} links, risk={risk_score}")
+        logger.info(f"Successfully converted forensic data: {len(nodes)} nodes, {len(links)} links, risk={risk_score:.3f}")
 
         return AnalysisDataModel(
             nodes=nodes,

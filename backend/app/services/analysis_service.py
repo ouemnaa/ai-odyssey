@@ -3,6 +3,7 @@
 import asyncio
 import sys
 import logging
+import time
 from typing import Dict, Any, Optional, List
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -53,7 +54,9 @@ class AnalysisService:
             "progress": 0,
             "currentStep": "Queued for processing",
             "resultData": None,
-            "errorMessage": None
+            "errorMessage": None,
+            "stepTimings": {},  # NEW: Track timing for each step
+            "totalDuration": None  # NEW: Total analysis time
         }
 
         logger.info(f"Analysis submitted: {analysis_id} for token {token_address}")
@@ -81,20 +84,28 @@ class AnalysisService:
             analysis['currentStep'] = 'Initializing ForensicGraphAgent...'
 
             # Step 1: Initialize agent (run in thread to avoid blocking)
+            step_start = time.time()
             self.agent = await asyncio.to_thread(
                 self._initialize_agent
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['1_initialize_agent'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 1 (Initialize Agent): {step_duration:.2f}s")
 
             analysis['progress'] = 20
             analysis['currentStep'] = 'Fetching transactions from BitQuery...'
 
             # Step 2: Fetch transactions
+            step_start = time.time()
             transactions = await asyncio.to_thread(
                 self.agent.fetch_real_transactions,
                 days_back=analysis['daysBack'],
                 limit=analysis['sampleSize'],
                 token_contract_address=analysis['tokenAddress']
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['2_fetch_transactions'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 2 (Fetch Transactions): {step_duration:.2f}s - Got {len(transactions)} transactions")
 
             if not transactions:
                 raise ValueError("No transactions found for this token")
@@ -103,32 +114,44 @@ class AnalysisService:
             analysis['currentStep'] = 'Fetching internal transactions...'
 
             # Step 3: Fetch internal transactions
+            step_start = time.time()
             internal_transactions = await asyncio.to_thread(
                 self.agent.fetch_real_internal_transactions,
                 limit=analysis['sampleSize'] // 5,
                 token_contract_address=analysis['tokenAddress']
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['3_fetch_internal_txs'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 3 (Fetch Internal Transactions): {step_duration:.2f}s - Got {len(internal_transactions)} transactions")
 
             analysis['progress'] = 50
             analysis['currentStep'] = 'Building transaction graph...'
             analysis['status'] = 'building_graph'
 
             # Step 4: Build graph
+            step_start = time.time()
             await asyncio.to_thread(
                 self.agent.build_graph_from_real_data,
                 transactions,
                 internal_transactions
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['4_build_graph'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 4 (Build Graph): {step_duration:.2f}s")
 
             analysis['progress'] = 70
             analysis['currentStep'] = 'Fetching token holders...'
 
             # Step 5: Fetch token holders
+            step_start = time.time()
             token_holders = await asyncio.to_thread(
                 self.agent.fetch_real_token_holders,
                 token_address=analysis['tokenAddress'],
                 limit=100
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['5_fetch_token_holders'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 5 (Fetch Token Holders): {step_duration:.2f}s - Got {len(token_holders)} holders")
             self.agent.token_holders = token_holders
 
             analysis['progress'] = 75
@@ -136,23 +159,32 @@ class AnalysisService:
             analysis['status'] = 'detecting_patterns'
 
             # Step 6: Detect patterns
+            step_start = time.time()
             clusters = await asyncio.to_thread(
                 self.agent.detect_all_clusters_real
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['6_detect_patterns'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 6 (Detect Patterns): {step_duration:.2f}s - Found {len(clusters)} clusters")
 
             analysis['progress'] = 85
             analysis['currentStep'] = 'Calculating risk metrics...'
 
             # Step 7: Calculate metrics
+            step_start = time.time()
             clusters = await asyncio.to_thread(
                 self.agent.calculate_advanced_risk_metrics,
                 clusters
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['7_calculate_metrics'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 7 (Calculate Metrics): {step_duration:.2f}s")
 
             analysis['progress'] = 90
             analysis['currentStep'] = 'Converting results to frontend format...'
 
             # Step 8: Convert to frontend format
+            step_start = time.time()
             from app.utils.graph_converter import convert_forensic_output_to_analysis_data
             analysis_data = await asyncio.to_thread(
                 convert_forensic_output_to_analysis_data,
@@ -160,6 +192,9 @@ class AnalysisService:
                 clusters=clusters,
                 agent=self.agent
             )
+            step_duration = time.time() - step_start
+            analysis['stepTimings']['8_convert_to_frontend'] = f"{step_duration:.2f}s"
+            logger.info(f"✓ Step 8 (Convert to Frontend): {step_duration:.2f}s")
 
             # Store results
             analysis['status'] = 'completed'
@@ -170,8 +205,13 @@ class AnalysisService:
             analysis['nodeCount'] = len(analysis_data.nodes)
             analysis['edgeCount'] = len(analysis_data.links)
             analysis['resultData'] = analysis_data.model_dump()
+            
+            # Calculate total duration
+            total_duration = (analysis['completedAt'] - analysis['startedAt']).total_seconds()
+            analysis['totalDuration'] = f"{total_duration:.2f}s"
 
-            logger.info(f"Analysis {analysis_id} completed successfully")
+            logger.info(f"✅ Analysis {analysis_id} completed in {total_duration:.2f}s")
+            logger.info(f"   Timings: {analysis['stepTimings']}")
             return analysis_data.model_dump()
 
         except Exception as e:
@@ -182,7 +222,7 @@ class AnalysisService:
             raise
 
     async def get_status(self, analysis_id: str) -> Dict[str, Any]:
-        """Get analysis status and progress"""
+        """Get analysis status and progress with detailed timing"""
         if analysis_id not in self.analyses:
             raise ValueError(f"Analysis {analysis_id} not found")
 
@@ -194,6 +234,8 @@ class AnalysisService:
             "currentStep": analysis["currentStep"],
             "startedAt": analysis["startedAt"],
             "completedAt": analysis["completedAt"],
+            "totalDuration": analysis.get("totalDuration"),
+            "stepTimings": analysis.get("stepTimings", {}),
             "errorMessage": analysis.get("errorMessage")
         }
 

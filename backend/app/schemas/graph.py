@@ -99,6 +99,8 @@ class RedFlag(BaseModel):
     affectedWallets: List[str] = Field(default_factory=list, description="Wallet addresses involved")
 
 
+
+
 class AnalysisDataModel(BaseModel):
     """Complete blockchain forensics analysis result"""
     nodes: List[NodeModel] = Field(..., description="List of wallets/addresses")
@@ -108,8 +110,19 @@ class AnalysisDataModel(BaseModel):
     topInfluentialWallets: List[TopInfluentialWallet] = Field(..., description="Most important wallets by centrality")
     detectedCommunities: List[DetectedCommunity] = Field(..., description="Detected communities")
     redFlags: List[RedFlag] = Field(..., description="Suspicious patterns and alerts")
+    
+    # NEW: PageRank analysis fields
+    pageRankMetrics: List["PageRankMetrics"] = Field(default_factory=list, description="PageRank metrics for all analyzed wallets")
+    topInfluencers: List["PageRankMetrics"] = Field(default_factory=list, description="Top 20 influential wallets by PageRank score")
+    influencerDumpingRisks: List["InfluencerDumpingRisk"] = Field(default_factory=list, description="Dumping risk assessment for influencers")
+    pageRankStats: Optional["PageRankStats"] = Field(None, description="Statistical summary of PageRank distribution")
 
     class Config:
         json_schema_extra = {
             "description": "Complete blockchain forensics analysis result matching frontend AnalysisData interface"
         }
+
+
+# Import schemas to avoid circular imports
+from app.schemas.analysis import PageRankMetrics, InfluencerDumpingRisk, PageRankStats
+

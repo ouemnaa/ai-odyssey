@@ -954,8 +954,8 @@ class ForensicGraphAgent:
             return {}
 
     def detect_influencer_dumping_risk(self, pagerank_scores, threshold_ratio=0.1):
-        """Detect risk of token dumping by influential wallets"""
-        print("\n⚠️  Analyse du risque de dumping par les influenceurs...")
+        """Detect risk of token dumping by influential wallets - ANALYZE ALL WALLETS"""
+        print("\n⚠️  Analyse du risque de dumping par les influenceurs (ALL WALLETS)...")
     
         if not pagerank_scores or not self.token_holders:
             print("⚠️  Données insuffisantes pour l'analyse de dumping")
@@ -963,10 +963,11 @@ class ForensicGraphAgent:
     
         risks = []
     
-        # Get top influencers by PageRank
-        top_influencers = sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True)[:20]
+        # Analyze ALL wallets in PageRank scores (not just top 20)
+        # This ensures comprehensive risk assessment across the entire network
+        all_wallets = sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True)
     
-        for wallet, pagerank_score in top_influencers:
+        for wallet, pagerank_score in all_wallets:
             if wallet in self.token_holders:
                 token_balance = self.token_holders[wallet]
             
@@ -1511,10 +1512,9 @@ def main_real_data(token_contract_address=None):
         # Analyse d'un token spécifique
         all_transactions = agent.fetch_real_transactions(
             days_back=1, 
-            limit=5000, 
+            limit=10000, 
             token_contract_address=token_contract_address
         )
-        
         if all_transactions:
             agent.transactions_cache = all_transactions
             
@@ -1539,7 +1539,7 @@ def main_real_data(token_contract_address=None):
         all_transactions = []
         
         for currency in currencies[:2]:  # Essayer les 2 premières
-            transactions = agent.fetch_real_transactions(days_back=1, limit=5000, currency=currency)
+            transactions = agent.fetch_real_transactions(days_back=1, limit=10000, currency=currency)
             if transactions:
                 all_transactions.extend(transactions)
                 print(f"   ✅ Ajouté {len(transactions)} transactions {currency}")

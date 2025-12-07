@@ -4,6 +4,7 @@
 // - Mixer connections
 // - Suspicious wallet clusters
 // - High wealth concentration (Gini coefficient)
+// - PageRank influence analysis
 
 export interface Node {
   id: string;
@@ -13,6 +14,9 @@ export interface Node {
   transactions: number;
   riskScore?: number;
   description?: string;
+  pageRankScore?: number;
+  inDegree?: number;
+  outDegree?: number;
 }
 
 export interface Link {
@@ -22,6 +26,41 @@ export interface Link {
   type: 'transfer' | 'trade' | 'wash' | 'mixer';
   count: number; // Number of transactions
 }
+
+// ==================== PageRank Analysis Types ====================
+
+export interface PageRankMetrics {
+  walletAddress: string;
+  pageRankScore: number; // 0-1 normalized
+  inDegree: number;
+  outDegree: number;
+  isWhale: boolean;
+  tokenBalance: number;
+  influence: 'very_high' | 'high' | 'medium' | 'low';
+}
+
+export interface InfluencerDumpingRisk {
+  walletAddress: string;
+  pageRankScore: number;
+  tokenBalance: number;
+  outgoingVolume: number;
+  riskScore: number; // 0-100
+  riskLevel: 'critical' | 'high' | 'medium' | 'low';
+  lastActivityTime?: Date;
+  dumpingProbability: number; // 0-1
+}
+
+export interface PageRankStats {
+  mean: number;
+  median: number;
+  std_dev: number;
+  max_score: number;
+  min_score: number;
+  percentile_95: number;
+  percentile_99: number;
+}
+
+// ==================== Main Analysis Data ====================
 
 export interface AnalysisData {
   nodes: Node[];
@@ -53,6 +92,12 @@ export interface AnalysisData {
     description: string;
     affectedWallets: string[];
   }>;
+  
+  // NEW: PageRank analysis fields
+  pageRankMetrics: PageRankMetrics[];
+  topInfluencers: PageRankMetrics[];
+  influencerDumpingRisks: InfluencerDumpingRisk[];
+  pageRankStats?: PageRankStats;
 }
 
 // Sample token addresses for the UI

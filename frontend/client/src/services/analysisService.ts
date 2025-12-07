@@ -22,6 +22,10 @@ export interface StatusResponse {
   progress: number;
   currentStep: string;
   errorMessage?: string;
+  totalDuration?: string;
+  stepTimings?: Record<string, string>;
+  startedAt?: string;
+  completedAt?: string;
 }
 
 export interface Node {
@@ -191,6 +195,96 @@ export async function listAnalyses(limit: number = 10, offset: number = 0) {
   }
 }
 
+// ==================== PageRank Analysis Functions ====================
+
+export interface PageRankMetrics {
+  walletAddress: string;
+  pageRankScore: number;
+  inDegree: number;
+  outDegree: number;
+  isWhale: boolean;
+  tokenBalance: number;
+  influence: 'very_high' | 'high' | 'medium' | 'low';
+}
+
+export interface InfluencerDumpingRisk {
+  walletAddress: string;
+  pageRankScore: number;
+  tokenBalance: number;
+  outgoingVolume: number;
+  riskScore: number;
+  riskLevel: 'critical' | 'high' | 'medium' | 'low';
+  lastActivityTime?: string;
+  dumpingProbability: number;
+}
+
+export interface PageRankAnalysisResult {
+  topInfluencers: PageRankMetrics[];
+  influencerDumpingRisks: InfluencerDumpingRisk[];
+  pageRankStats: {
+    mean: number;
+    median: number;
+    std_dev: number;
+    max_score: number;
+    min_score: number;
+    percentile_95: number;
+    percentile_99: number;
+  };
+  metadata: {
+    calculatedAt: string;
+    totalWalletsAnalyzed: number;
+  };
+}
+
+/**
+ * Get PageRank analysis results for completed analysis
+ */
+export async function getPageRankAnalysis(analysisId: string): Promise<PageRankAnalysisResult> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/analysis/${analysisId}/pagerank`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error('Analysis not found or not completed');
+      }
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch PageRank analysis:', error);
+    throw error;
+  }
+}
+
+/**
+ * Get detailed PageRank metrics for a specific wallet
+ */
+export async function getInfluencerDetails(
+  analysisId: string,
+  walletAddress: string
+): Promise<PageRankMetrics> {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/analysis/${analysisId}/influencer/${walletAddress}`
+    );
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error('Wallet not found in analysis');
+      }
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch influencer details:', error);
+    throw error;
+  }
+}
+
 /**
  * Health check - verify backend is running
  */
@@ -202,3 +296,4 @@ export async function healthCheck(): Promise<boolean> {
     return false;
   }
 }
+

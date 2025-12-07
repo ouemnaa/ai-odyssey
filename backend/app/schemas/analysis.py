@@ -49,3 +49,67 @@ class ExportRequest(BaseModel):
     """Export format request"""
     format: str = Field(default="json", description="Export format: 'csv' or 'json'")
     includeMetadata: bool = Field(default=True, description="Include metadata in export")
+
+
+# ==================== PageRank Analysis Schemas ====================
+
+
+class PageRankMetrics(BaseModel):
+    """PageRank metrics for a wallet node"""
+    walletAddress: str = Field(..., description="Wallet address")
+    pageRankScore: float = Field(..., ge=0.0, le=1.0, description="Normalized PageRank score (0-1)")
+    inDegree: int = Field(..., ge=0, description="Number of incoming connections")
+    outDegree: int = Field(..., ge=0, description="Number of outgoing connections")
+    isWhale: bool = Field(default=False, description="Whether wallet is a major token holder")
+    tokenBalance: float = Field(default=0.0, description="Token holdings amount")
+    influence: str = Field(..., description="Influence level: 'very_high', 'high', 'medium', 'low'")
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "walletAddress": "0x1234567890123456789012345678901234567890",
+                "pageRankScore": 0.0847,
+                "inDegree": 47,
+                "outDegree": 23,
+                "isWhale": True,
+                "tokenBalance": 125000.0,
+                "influence": "high"
+            }
+        }
+
+
+class InfluencerDumpingRisk(BaseModel):
+    """Risk assessment for token dumping by influential wallets"""
+    walletAddress: str = Field(..., description="Wallet address")
+    pageRankScore: float = Field(..., ge=0.0, le=1.0, description="PageRank influence score")
+    tokenBalance: float = Field(..., ge=0.0, description="Token holdings amount")
+    outgoingVolume: float = Field(..., ge=0.0, description="Recent outgoing transaction volume")
+    riskScore: float = Field(..., ge=0, le=100, description="Dumping risk score (0-100)")
+    riskLevel: str = Field(..., description="Risk level: 'critical', 'high', 'medium', 'low'")
+    lastActivityTime: Optional[datetime] = Field(None, description="Last transaction time")
+    dumpingProbability: float = Field(..., ge=0.0, le=1.0, description="Estimated dumping probability (0-1)")
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "walletAddress": "0x1234567890123456789012345678901234567890",
+                "pageRankScore": 0.0847,
+                "tokenBalance": 125000.0,
+                "outgoingVolume": 2500.0,
+                "riskScore": 72.5,
+                "riskLevel": "high",
+                "dumpingProbability": 0.42
+            }
+        }
+
+
+class PageRankStats(BaseModel):
+    """Statistical summary of PageRank distribution"""
+    mean: float = Field(..., description="Mean PageRank score")
+    median: float = Field(..., description="Median PageRank score")
+    std_dev: float = Field(..., description="Standard deviation")
+    max_score: float = Field(..., description="Maximum PageRank score")
+    min_score: float = Field(..., description="Minimum PageRank score")
+    percentile_95: float = Field(..., description="95th percentile score")
+    percentile_99: float = Field(..., description="99th percentile score")
+
