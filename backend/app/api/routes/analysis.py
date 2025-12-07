@@ -14,8 +14,31 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1", tags=["analysis"])
 
 # Global service instance (in production, use dependency injection)
-analysis_service = AnalysisService(bitquery_api_key="ory_at_GvkHmlXX6ZDpF96XMfO9J4pEk-ZdqPAMzqcEKCATCAI.KIdkp5fUfNMeBjoxi49d4onFazuqXCFYgHAGadfHG8Q")
+analysis_service = AnalysisService(bitquery_api_key="ory_at_adc1TxtCZkx1mxeX7yWgGIt_m3EUM4SVRcDdfIEQ2B4.1WPNvkhvPpQCHoh5-cj5Xh3wt3aiqSrtrSZ-kspUNgA")
 export_service = ExportService()
+
+
+@router.get(
+    "/health/forensic",
+    summary="Check forensic agent health",
+    description="Verify that ForensicGraphAgent can be initialized"
+)
+async def check_forensic_health():
+    """Check if forensic agent can be initialized"""
+    try:
+        agent = await analysis_service._async_initialize_agent()
+        return {
+            "status": "healthy",
+            "agent": "ForensicGraphAgent",
+            "message": "Agent initialized successfully"
+        }
+    except Exception as e:
+        logger.error(f"Forensic agent health check failed: {str(e)}", exc_info=True)
+        return {
+            "status": "unhealthy",
+            "agent": "ForensicGraphAgent",
+            "error": str(e)
+        }
 
 
 @router.post(

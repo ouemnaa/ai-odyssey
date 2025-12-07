@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import logging
 
-from app.api.routes import analysis, health
+from app.api.routes import analysis, health, mixer
 
 # Configure logging
 logging.basicConfig(
@@ -58,6 +58,7 @@ app.add_middleware(
 # Include routers
 app.include_router(health.router)
 app.include_router(analysis.router)
+app.include_router(mixer.router)
 
 
 @app.get("/", include_in_schema=False)

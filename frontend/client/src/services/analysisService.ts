@@ -286,6 +286,45 @@ export async function getInfluencerDetails(
 }
 
 /**
+ * Analyze token for mixer connections
+ * Returns AI report and graph visualization data
+ */
+export async function analyzeMixers(tokenAddress: string, maxHops: number = 3) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/mixer/analyze/${tokenAddress}?max_hops=${maxHops}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Mixer analysis failed: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to analyze mixers:', error);
+    throw error;
+  }
+}
+
+/**
+ * Check mixer service health
+ */
+export async function checkMixerHealth() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/mixer/health`);
+    if (!response.ok) {
+      return false;
+    }
+    const data = await response.json();
+    return data.status === 'healthy';
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Health check - verify backend is running
  */
 export async function healthCheck(): Promise<boolean> {

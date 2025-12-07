@@ -38,7 +38,7 @@ class DateTimeEncoder(json.JSONEncoder):
 NEO4J_URI = "neo4j://127.0.0.1:7687"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "NourIGL4"
-BITQUERY_API_KEY = "ory_at_IgOGfUWwtV3dqHQz4dW_bs5eWxgX7tnV0FdEo_GAYJI.vhiOQPEaYquvNRbmJAT3-DUId3dzWxiIT-1lFS2LNr4"
+BITQUERY_API_KEY = "ory_at_adc1TxtCZkx1mxeX7yWgGIt_m3EUM4SVRcDdfIEQ2B4.1WPNvkhvPpQCHoh5-cj5Xh3wt3aiqSrtrSZ-kspUNgA"
 
 # FORENSIC GRAPH AGENT USE CASE: Weighted risk model (40/40/10/10 as per use case)
 WEIGHTS = {

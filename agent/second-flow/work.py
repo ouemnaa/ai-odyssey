@@ -1493,7 +1493,7 @@ class ForensicGraphAgent:
 
 def main_real_data(token_contract_address=None):
     """Fonction principale pour l'analyse avec données réelles"""
-    BITQUERY_API_KEY = ""
+    BITQUERY_API_KEY = "ory_at_adc1TxtCZkx1mxeX7yWgGIt_m3EUM4SVRcDdfIEQ2B4.1WPNvkhvPpQCHoh5-cj5Xh3wt3aiqSrtrSZ-kspUNgA"
     
     print("\n" + "=" * 70)
     if token_contract_address:
