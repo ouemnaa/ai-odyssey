@@ -16,7 +16,7 @@ An advanced blockchain forensics platform for detecting suspicious token behavio
   - Mixer/privacy pool usage (Tornado Cash patterns)
   - Wash trading rings and circular transactions
   - Ponzi scheme hierarchies
-- 🎯 **Risk Scoring**: Comprehensive 40/40/10/10 weighted heuristic model
+- 🎯 **Risk Scoring**: Comprehensive 40/40/10/10 weighted heuristic model 
   - 40% Fan-in analysis (incoming transactions)
   - 40% Fan-out analysis (outgoing transactions)
   - 10% Uniform denomination detection (Tornado Cash)
@@ -100,7 +100,7 @@ docker-compose up
 
 # Backend: http://localhost:8000
 # Frontend: http://localhost:3000
-# Redis: localhost:6379
+
 ```
 
 ## 🏗️ Architecture
@@ -124,12 +124,12 @@ docker-compose up
 │  • GET /api/v1/analysis/{id}/export     │
 └────────────────┬────────────────────────┘
                  │
-     ┌───────────┼───────────┐
-     ▼           ▼           ▼
-  ┌──────┐  ┌──────────┐  ┌──────────┐
-  │Redis │  │PostgreSQL│  │ Neo4j    │
-  │Cache │  │ Database │  │(Optional)│
-  └──────┘  └──────────┘  └──────────┘
+     ┌─────────── ───────────┐
+     ▼                       ▼
+  ┌──────┐                ┌──────────┐
+  │      │                │ Neo4j    │
+  │Cache │                │Database│
+  └──────┘                └──────────┘
      │
      ▼
 ┌─────────────────────────────────────────┐
@@ -167,8 +167,7 @@ docker-compose up
 #### Backend (`backend/`)
 
 - **Framework**: FastAPI + Uvicorn (Python 3.8+)
-- **Database**: PostgreSQL (optional) for persistence
-- **Cache**: Redis for session/result caching
+- **Database**: Neo4j for persistence and graph manipulation
 - **Validation**: Pydantic models
 - **Async**: AsyncIO for non-blocking operations
 
@@ -409,22 +408,13 @@ LOG_LEVEL=info
 PORT=8000
 
 # Database
-DATABASE_URL=postgresql://user:password@localhost/ai_odyssey
-DATABASE_POOL_SIZE=20
-
-# Cache
-REDIS_URL=redis://localhost:6379/0
-CACHE_TTL=3600
+Neo4j
 
 # API Keys
 BITQUERY_API_KEY=your_bitquery_key_here
 
-# Security
-CORS_ORIGINS=http://localhost:3000,http://localhost:5173
-JWT_SECRET=your-super-secret-key-minimum-32-characters
-
 # Analysis Settings
-MAX_ANALYSIS_TIME=300
+MAX_ANALYSIS_TIME=30s
 MAX_TRANSACTIONS_PER_ANALYSIS=10000
 ```
 
@@ -588,7 +578,7 @@ Interactive API docs available at:
               ↓
 5. Graph Converter transforms output
               ↓
-6. Results stored in Redis/PostgreSQL
+6.      Results stored 
               ↓
 7. Frontend polls and displays visualization
 ```
